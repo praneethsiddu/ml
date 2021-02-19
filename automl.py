@@ -4,6 +4,9 @@ Created on Thu Feb 18 12:32:44 2021
 
 @author: praneeth
 """
+"""
+Created by: praneeth partapu
+"""
 
 import streamlit as st
 
@@ -96,7 +99,7 @@ def main():
     if data is None:
         st.warning("No file Provided to work on")
     else:
-        pr = ProfileReport(df)
+        pr = ProfileReport(df, explorative=True)
         st.header('**Input DataFrame**')
         st.write(df)
         st.write('---')
