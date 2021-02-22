@@ -29,7 +29,7 @@ def main():
  img = mpimg.imread('eda.jpg')
  st.image(img,use_column_width=True,caption='EDA') 
  st.sidebar.title("")
- data = st.sidebar.file_uploader("Upload Dataset", type=['csv','txt'])
+ data = st.sidebar.file_uploader("Upload Dataset", type=['csv'])
  activites = ["ExploringDataAnalysis","Pandas-Profiling","Data Visualization","LazyRegressor","LazyClassifier"]
  choice = st.sidebar.selectbox("Select Actvity", activites)
  
