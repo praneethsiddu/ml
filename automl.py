@@ -39,6 +39,7 @@ def main():
          csv = pd.read_csv(data)
          return csv
      df = load_csv()
+     df1=df.loc[:5000]
      st.success("Data File Uploaded Successfully")
  else:
      st.warning("Waiting for user to upload the cse file")
@@ -99,7 +100,7 @@ def main():
     if data is None:
         st.warning("No file Provided to work on")
     else:
-        pr = ProfileReport(df, explorative=True)
+        pr = ProfileReport(df1, explorative=True)
         st.header('**Input DataFrame**')
         st.write(df)
         st.write('---')
@@ -115,42 +116,42 @@ def main():
      if st.checkbox("Quick Analysis"):
          select_ = st.radio("Select Type for Quick Analysis",('Count Plot','Line chart','Bar chart','area chart','Scatter Plot','Correlation Heatmap','Histogram','Pair Plot'))
          if select_ == "Count Plot":
-             st.write(df.dtypes)
-             s = st.selectbox('select the column',df.columns)
-             ax = sns.countplot(df[s])
+             st.write(df1.dtypes)
+             s = st.selectbox('select the column',df1.columns)
+             ax = sns.countplot(df1[s])
              ax.set_xticklabels(ax.get_xticklabels(), rotation=40, ha="right")
-             st.write(sns.countplot(df[s]))
+             st.write(sns.countplot(df1[s]))
              plt.tight_layout()
              st.pyplot()
          if select_ == "Line chart":
-             st.write(df.dtypes)
-             s = st.multiselect("Select Columns To Show",df.columns)
-             st.line_chart(df[s])
+             st.write(df1.dtypes)
+             s = st.multiselect("Select Columns To Show",df1.columns)
+             st.line_chart(df1[s])
          if select_=="Bar chart":
-             st.write(df.dtypes)
-             s = st.multiselect("Select Columns To Show",df.columns)
-             st.bar_chart(df[s])
+             st.write(df1.dtypes)
+             s = st.multiselect("Select Columns To Show",df1.columns)
+             st.bar_chart(df1[s])
          if select_=="area chart":
-             st.write(df.dtypes)
-             s = st.multiselect("Select Columns To Show",df.columns)
-             st.area_chart(df[s])
+             st.write(df1.dtypes)
+             s = st.multiselect("Select Columns To Show",df1.columns)
+             st.area_chart(df1[s])
          if select_ == 'Scatter Plot':
-             st.write(df.dtypes)
-             x = st.selectbox('Select X Column',df.columns)
-             y = st.selectbox('Select Y Column',df.columns)
+             st.write(df1.dtypes)
+             x = st.selectbox('Select X Column',df1.columns)
+             y = st.selectbox('Select Y Column',df1.columns)
              st.write(x,y)
-             st.write(sns.scatterplot(x,y,data=df))
+             st.write(sns.scatterplot(x,y,data=df1))
              st.pyplot()   
          if select_=='Correlation Heatmap':
-             st.write(sns.heatmap(df.corr()))
+             st.write(sns.heatmap(df1.corr()))
              st.pyplot()
          if select_ == "Histogram":
-             st.write(df.dtypes)
-             x = st.selectbox('Select Numerical Variables',df.columns)
-             st.write(sns.distplot(df[x]))
+             st.write(df1.dtypes)
+             x = st.selectbox('Select Numerical Variables',df1.columns)
+             st.write(sns.distplot(df1[x]))
              st.pyplot()
          if select_=="Pair Plot":
-               st.write(sns.pairplot(df))
+               st.write(sns.pairplot(df1))
                st.pyplot()
  elif choice== "LazyRegressor" and data is not None:
      df1=df.loc[:100] # FOR TESTING PURPOSE, COMMENT THIS OUT FOR PRODUCTION
