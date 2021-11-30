@@ -39,7 +39,7 @@ def main():
          csv = pd.read_csv(data)
          return csv
      df = load_csv()
-     df1=df.loc[:5000]
+     df1=df.loc[:10000]
      st.success("Data File Uploaded Successfully")
  else:
      st.warning("Waiting for user to upload the cse file")
@@ -112,6 +112,7 @@ def main():
                     
        
  elif choice=="Data Visualization" and data is not None:
+     st.write(df.shape)
      st.subheader("Data Visualization")
      if st.checkbox("Quick Analysis"):
          select_ = st.radio("Select Type for Quick Analysis",('Count Plot','Line chart','Bar chart','area chart','Scatter Plot','Correlation Heatmap','Histogram','Pair Plot'))
